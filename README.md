@@ -1,4 +1,4 @@
-# PythonExerciseBlogPostsAPI
+# PythonExerciseBlogPostsFASTAPI
 ### Job Interview task: 
 - Create an easy blog management Rest API in Python using Fast API.
 ### Main functions:
