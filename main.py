@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, HTTPException
 from fastapi_pagination import PaginationParams, Page
 from fastapi_pagination.paginator import paginate
 from DB import post, database
@@ -29,7 +29,11 @@ async def get_all_posts(params: PaginationParams = Depends()):
 @app.get('/post{post_id}', response_model=pmodels.OnePost, tags=['Posts'])
 async def get_one_post(post_id: int):
     query = post.select().where(post.c.id == post_id)
-    return await database.fetch_one(query)
+    res = await database.fetch_one(query)
+    if res is None:
+        raise HTTPException(status_code=404, detail="Item not found.")
+    else:
+        return res
 
 
 @app.post('/newpost', response_model=pmodels.PostCreation, tags=['Posts'])
