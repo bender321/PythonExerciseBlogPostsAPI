@@ -46,8 +46,7 @@
 ####  DELETE /post{post_id} (Delete post):
 - for deleting specific post defined by it's ID
 ##### Important: 
-- if you delete for example post{1} then pagination is starting from next post which has ID{2}, but you can no longer search for or edit post with ID{1}
-- if you try so in case of search you will recive null 
-- if you try edit deleted post you will recive null
+- if you delete for example post{1} then pagination is starting from next post which has ID{2}
+- but if you try seach for or update deleted post{1}, then the exeption with message is raised (404, Item not found.)
 #### POST /newpost (Create post):
 - for creating a new post (name of post and it's content, ID and date of creation is generated automaticaly) and storing it in database
