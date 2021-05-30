@@ -11,6 +11,7 @@ class OnePost(BaseModel):
 
 
 class AllPosts(BaseModel):
+    id: int
     name: str
 
 
